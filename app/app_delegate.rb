@@ -10,10 +10,15 @@ class AppDelegate
     @add_button = UIButton.buttonWithType(UIButtonTypeRoundedRect)
     @add_button.setTitle("Add", forState:UIControlStateNormal)
     @add_button.sizeToFit
-    @add_button.frame = CGRect.new(
-        [10, @window.frame.size.height - 10 - @add_button.frame.size.height],
-        @add_button.frame.size)
+    @add_button.frame = CGRect.new(get_center_position(@add_button), @add_button.frame.size)
     @window.addSubview(@add_button)
     true
+  end
+
+  def get_center_position(element)
+    [
+      @window.frame.size.width/2 - element.frame.size.width/2,
+      @window.frame.size.height/2 - element.frame.size.height
+    ]
   end
 end
